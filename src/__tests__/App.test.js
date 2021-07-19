@@ -14,7 +14,7 @@ describe("Fetching pets", () => {
     render(<App />);
 
     fireEvent.click(screen.getByText(/Find pets/));
-
+    debugger
     await screen.findAllByTestId("pet");
 
     expect(screen.getAllByTestId("pet")).toHaveLength(getAll().length);
@@ -46,6 +46,8 @@ describe("Adopting pets", () => {
     const button = buttons[0];
 
     fireEvent.click(button);
+
+    await screen.findAllByText(/Already adopted/);
 
     expect(button.textContent).toContain("Already adopted");
   });
